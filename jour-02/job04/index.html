@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etudiant</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 1.5em;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="date"],
+        .form-group select {
+            width: 100%;
+            padding: 0.75em;
+            margin-top: 0.25em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 1em;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .form-group input[type="submit"]:active {
+            background-color: #004494;
+            transform: scale(1);
+        }
+
+        .error {
+            color: #d9534f;
+            font-weight: bold;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+
+        .success {
+            color: #5bc0de;
+            font-weight: bold;
+            margin-bottom: 1em;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ajouter un étudiant</h1>
+        <form id="form-add-student" method="POST">
+            <div class="form-group">
+                <label for="student-mail">Email:</label>
+                <input type="email" name="student-mail" id="student-mail" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="student-fullname">Nom complet:</label>
+                <input type="text" name="student-fullname" id="student-fullname" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="student-gender">Genre:</label>
+                <select name="student-gender" id="student-gender" required>
+                    <option value="">Sélectionner</option>
+                    <option value="Male">Homme</option>
+                    <option value="Female">Femme</option>
+                    <option value="Other">Autre</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="student-grade">Promotion:</label>
+                <select name="student-grade" id="student-grade" required>
+                    <option value="">Sélectionner</option>
+                    <option value="1">Bachelor 1</option>
+                    <option value="2">Bachelor 2 Web</option>
+                    <option value="3">Bachelor 2 Logiciel</option>
+                    <option value="4">Bachelor 3 Logiciel</option>
+                    <option value="5">Bachelor 2 Cyber</option>
+                    <option value="6">Bachelor 2 IA</option>
+                    <option value="7">Bachelor 3 Web</option>
+                    <option value="8">Bachelor 3 Cyber</option>
+                    <option value="9">Mastère DPO</option>
+                    <option value="10">Mastère 1 IT Business IT</option>
+                    <option value="11">Mastère 2 IT Business IT</option>
+                    <option value="12">Mastère DPO</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="student-birthdate">Date de naissance:</label>
+                <input type="date" name="student-birthdate" id="student-birthdate" required>
+            </div>
+            
+            <input type="submit" id="submit-btn" value="Ajouter">
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
