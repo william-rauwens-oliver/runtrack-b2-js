@@ -1,12 +1,7 @@
-function myUpperCase(str) {
-    if (typeof str === 'string') {
-        return str.toUpperCase();
-    } else {
-        return 'Le paramètre doit être une chaîne de caractères';
-    }
+function myUpperCase(string) {
+    return string.toUpperCase();
 }
 
-let testString = "bonjour le monde";
-let result = myUpperCase(testString);
 
-document.getElementById('result').textContent = result;
+console.log(myUpperCase("Hello World") === "HELLO WORLD");
+
