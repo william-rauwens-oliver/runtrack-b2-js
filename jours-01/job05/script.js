@@ -1,26 +1,23 @@
 function myPrimeList(limit) {
-    let primeList = [];
-    for (let i = 2; i < limit; i++) {
-        let isPrime = true;
-        for (let j = 2; j < i; j++) {
-            if (i % j === 0) {
-                isPrime = false;
-                break;
-            }
+    const primes = [];
+    
+    function isPrime(num) {
+        if (num <= 1) return false;
+        if (num <= 3) return true;
+        if (num % 2 === 0 || num % 3 === 0) return false;
+        for (let i = 5; i * i <= num; i += 6) {
+            if (num % i === 0 || num % (i + 2) === 0) return false;
         }
-        if (isPrime) {
-            primeList.push(i);
+        return true;
+    }
+    
+    for (let i = 2; i <= limit; i++) {
+        if (isPrime(i)) {
+            primes.push(i);
         }
     }
-    return primeList;
+    
+    return primes;
 }
 
-function arraysEqual(arr1, arr2) {
-    if (arr1.length !== arr2.length) return false;
-    for (let i = 0; i < arr1.length; i++) {
-        if (arr1[i] !== arr2[i]) return false;
-    }
-    return true;
-}
-
-console.log(arraysEqual(myPrimeList(18), [2, 3, 5, 7, 11, 13, 17]));
+console.log(myPrimeList(18)); 

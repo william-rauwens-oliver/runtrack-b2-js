@@ -1,15 +1,16 @@
 function myNearZero(array) {
-    let nearZero = array[0];
-    for (let i = 1; i < array.length; i++) {
-        if (Math.abs(array[i]) < Math.abs(nearZero)) {
-            nearZero = array[i];
-        }
+    if (array.length === 0) {
+        return null; 
     }
-    return nearZero;
+
+    return array.reduce((nearest, current) => {
+        if (nearest === undefined || Math.abs(current) < Math.abs(nearest) || 
+           (Math.abs(current) === Math.abs(nearest) && current > nearest)) {
+            return current;
+        }
+        return nearest;
+    });
 }
 
-function compareNearZero() {
-    return myNearZero([3, 8, 4, 2, 5]) === 2 && myNearZero([-1, -4, 2, 5, 6, 9]) === -1;
-}
-
-console.log(compareNearZero());
+console.log(myNearZero([3, 8, 4, 2, 5]));
+console.log(myNearZero([-1, -4, 2, 5, 6, 9]));

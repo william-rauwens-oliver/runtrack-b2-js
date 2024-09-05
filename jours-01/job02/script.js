@@ -7,4 +7,4 @@ function myCountChar(haystack, needle) {
     }
     return count;
 }
-console.log(myCountChar("hello World", "o") === 2);
+console.log(myCountChar("hello World", "o")); // 2

@@ -6,4 +6,4 @@ function myArraySum(array) {
     return sum;
 }
 
-console.log(myArraySum([4, 24, 52, 14, 32, 56]) === 182);
+console.log(myArraySum([4, 24, 52, 14, 32, 56]));
