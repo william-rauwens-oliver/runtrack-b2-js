@@ -5,7 +5,6 @@ class Board {
         this.initializeBoard();
     }
 
-    // Méthode pour initialiser le plateau avec des cases vides et réinitialiser hasWinner
     initializeBoard() {
         this.grid = [
             ['-', '-', '-'],
@@ -15,10 +14,9 @@ class Board {
         this.hasWinner = false;
     }
 
-    // Méthode pour afficher le plateau dans l'élément avec l'id 'board'
     displayBoard() {
         const boardDiv = document.getElementById('board');
-        boardDiv.innerHTML = ''; // Vider le contenu avant d'afficher la nouvelle grille
+        boardDiv.innerHTML = '';
 
         for (let row = 0; row < 3; row++) {
             const rowDiv = document.createElement('div');
@@ -35,19 +33,16 @@ class Board {
         }
     }
 
-    // Méthode pour placer un symbole sur le plateau
     placeMove(row, col, symbol) {
         if (this.grid[row][col] !== '-') {
-            return false; // La case est déjà prise
+            return false;
         }
         this.grid[row][col] = symbol;
         return true;
     }
 
-    // Méthode pour vérifier si un joueur a gagné
     checkVictory() {
         const winningCombinations = [
-            // Lignes
             [[0, 0], [0, 1], [0, 2]],
             [[1, 0], [1, 1], [1, 2]],
             [[2, 0], [2, 1], [2, 2]],
@@ -75,7 +70,6 @@ class Board {
         return false;
     }
 
-    // Méthode pour vérifier si le plateau est plein (match nul)
     isFull() {
         for (let row = 0; row < 3; row++) {
             for (let col = 0; col < 3; col++) {
@@ -87,7 +81,6 @@ class Board {
         return true;
     }
 
-    // Méthode pour réinitialiser le plateau et l'afficher
     resetBoard() {
         this.initializeBoard();
         this.displayBoard();
