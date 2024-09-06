@@ -32,6 +32,7 @@
             background-color: #1abc9c;
             color: white;
             border: none;
+            margin-left: 80px;
             padding: 10px 20px;
             font-size: 18px;
             border-radius: 5px;
@@ -97,13 +98,17 @@
     </style>
 </head>
 <body>
-    <h1>Tic Tac Toe</h1>
-    <p id="current-player">Joueur actuel : X</p>
-    <p id="message"></p>
-    <p id="turn">Nombre de tours : 0</p>
-    <button id="play">Nouvelle partie</button>
-    <div id="board">
-        <!-- JS -->
+    <div>
+        <h1>Tic Tac Toe</h1>
+        <p id="current-player">Joueur actuel : X</p>
+        <p id="message"></p>
+        <p id="turn">Nombre de tours : 0</p>
+        <p id="player-x-count">Tours de X : 0</p>
+        <p id="player-o-count">Tours de O : 0</p>
+        <button id="play">Nouvelle partie</button>
+        <div id="board">
+            <!-- JS -->
+        </div>
     </div>
 
     <script type="module" src="./script.js"></script>

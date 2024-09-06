@@ -1,3 +1,4 @@
+import Player from './Player.js';
 import Board from './Board.js';
 
 class Game {
@@ -6,17 +7,25 @@ class Game {
         this.board = board;
         this.currentTurn = this.players[0];
         this.turnCount = 0;
+        this.playerXCount = 0;
+        this.playerOCount = 0;
+        this.turnsPerPlayer = { 'X': 0, 'O': 0 };
     }
 
-    //démarre une nouvelle partie
+    // nouvelle partie
     startNewGame() {
         this.board.resetBoard();
         this.currentTurn = this.players[0];
         this.turnCount = 0;
+        this.playerXCount = 0;
+        this.playerOCount = 0;
+        this.turnsPerPlayer = { 'X': 0, 'O': 0 };
         this.updateTurnDisplay();
         this.registerMove();
         document.getElementById('message').textContent = '';
         document.getElementById('current-player').textContent = `Joueur actuel : ${this.currentTurn.symbol}`;
+        document.getElementById('player-x-count').textContent = `Tours de X : 0`;
+        document.getElementById('player-o-count').textContent = `Tours de O : 0`;
     }
 
     // effectue un mouvement
@@ -24,6 +33,7 @@ class Game {
         if (this.board.placeMove(row, col, this.currentTurn.symbol)) {
             this.board.displayBoard();
             this.turnCount++;
+            this.turnsPerPlayer[this.currentTurn.symbol]++;
             this.updateTurnDisplay();
             if (this.checkGameOver()) {
                 this.announceWinner();
@@ -50,7 +60,7 @@ class Game {
         document.getElementById('current-player').textContent = `Joueur actuel : ${this.currentTurn.symbol}`;
     }
 
-    // regarde si la partie est terminée
+    // vérifie si la partie est terminée
     checkGameOver() {
         if (this.board.checkVictory()) {
             return true;
@@ -61,30 +71,35 @@ class Game {
         return false;
     }
 
-    // annonce le gagnant ou une égalité
+    // gagnant ou égalité
     announceWinner() {
         const messageElement = document.getElementById('message');
         if (this.board.hasWinner) {
-            messageElement.textContent = `Le joueur ${this.currentTurn.symbol} a gagné !`;
+            messageElement.textContent = `Le joueur ${this.currentTurn.symbol} a gagné en ${this.turnsPerPlayer[this.currentTurn.symbol]} tours !`;
         } else {
             messageElement.textContent = `Match nul !`;
         }
     }
 
-    // réinitialise le jeu
+    // réinitialise la partie
     resetGame() {
         this.board.resetBoard();
         this.currentTurn = this.players[0];
         this.turnCount = 0;
+        this.playerXCount = 0;
+        this.playerOCount = 0;
+        this.turnsPerPlayer = { 'X': 0, 'O': 0 };
         document.getElementById('message').textContent = '';
         document.getElementById('current-player').textContent = `Joueur actuel : ${this.currentTurn.symbol}`;
         this.updateTurnDisplay();
     }
 
+    // affichage du nombre de tours mis à jour sans rafraichir la page
     updateTurnDisplay() {
-        document.getElementById('turn').textContent = `Nombre de tours : ${this.turnCount}`;
+        document.getElementById('turn').textContent = `Nombre de tours total : ${this.turnCount}`;
+        document.getElementById('player-x-count').textContent = `Tours de X : ${this.turnsPerPlayer['X']}`;
+        document.getElementById('player-o-count').textContent = `Tours de O : ${this.turnsPerPlayer['O']}`;
     }
 }
 
 export default Game;
-  
