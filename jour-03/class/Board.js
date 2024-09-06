@@ -5,6 +5,7 @@ class Board {
         this.initializeBoard();
     }
 
+    // plateau avec des valeurs vides ('-')
     initializeBoard() {
         this.grid = [
             ['-', '-', '-'],
@@ -14,6 +15,7 @@ class Board {
         this.hasWinner = false;
     }
 
+    // affiche le contenu de la grille dans la div avec id "board"
     displayBoard() {
         const boardDiv = document.getElementById('board');
         boardDiv.innerHTML = '';
@@ -27,22 +29,27 @@ class Board {
                 button.classList.add('case');
                 button.id = `btn-${row}-${col}`;
                 button.textContent = this.grid[row][col];
+
                 rowDiv.appendChild(button);
             }
+
             boardDiv.appendChild(rowDiv);
         }
     }
 
+    // place un symbole dans la grille à une position donnée
     placeMove(row, col, symbol) {
-        if (this.grid[row][col] !== '-') {
-            return false;
+        if (this.grid[row][col] === '-') {
+            this.grid[row][col] = symbol;
+            return true;
         }
-        this.grid[row][col] = symbol;
-        return true;
+        return false;
     }
 
+    // victoire
     checkVictory() {
         const winningCombinations = [
+            // Lignes
             [[0, 0], [0, 1], [0, 2]],
             [[1, 0], [1, 1], [1, 2]],
             [[2, 0], [2, 1], [2, 2]],
@@ -55,7 +62,7 @@ class Board {
             [[0, 2], [1, 1], [2, 0]]
         ];
 
-        for (let combination of winningCombinations) {
+        for (const combination of winningCombinations) {
             const [a, b, c] = combination;
             if (
                 this.grid[a[0]][a[1]] !== '-' &&
@@ -70,17 +77,12 @@ class Board {
         return false;
     }
 
+    // Vérifie si la grille est pleine
     isFull() {
-        for (let row = 0; row < 3; row++) {
-            for (let col = 0; col < 3; col++) {
-                if (this.grid[row][col] === '-') {
-                    return false;
-                }
-            }
-        }
-        return true;
+        return this.grid.every(row => row.every(cell => cell !== '-'));
     }
 
+    // Réinitialise le plateau pour une nouvelle partie
     resetBoard() {
         this.initializeBoard();
         this.displayBoard();

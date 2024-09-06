@@ -1,7 +1,17 @@
 import Player from './class/Player.js';
+import Board from './class/Board.js';
+import Game from './class/Game.js';
 
-const player1 = new Player('X', true);
-const player2 = new Player('O');
+const players = [
+    new Player('X', true),
+    new Player('O', false)
+];
 
-console.log(player1);
-console.log(player2);
+const board = new Board();
+const game = new Game(players, board);
+
+document.getElementById('play').addEventListener('click', () => {
+    game.resetGame();
+});
+
+game.startNewGame();

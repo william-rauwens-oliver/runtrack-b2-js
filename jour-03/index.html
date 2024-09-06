@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        #current-player, #message, #turn {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #34495e;
+        }
+
+        #play {
+            background-color: #1abc9c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        #play:hover {
+            background-color: #16a085;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 10px;
+        }
+
+        .case {
+            width: 100px;
+            height: 100px;
+            background-color: #ecf0f1;
+            border: 2px solid #2c3e50;
+            font-size: 48px;
+            font-weight: bold;
+            color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .case:hover {
+            background-color: #bdc3c7;
+            transform: scale(1.1);
+        }
+
+        .case:active {
+            background-color: #95a5a6;
+        }
+
+        #message {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        @media (max-width: 600px) {
+            .case {
+                width: 80px;
+                height: 80px;
+                font-size: 36px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            #current-player, #message, #turn {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <p id="current-player">Joueur actuel : X</p>
+    <p id="message"></p>
+    <p id="turn">Nombre de tours : 0</p>
+    <button id="play">Nouvelle partie</button>
+    <div id="board">
+        <!-- JS -->
+    </div>
+
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
